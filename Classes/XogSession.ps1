@@ -3,6 +3,7 @@ Class XogSession{
 	[string] $SessionID
 	[bool] $IsActive
 	[string] $Domain
+	hidden [string] $URI
 	hidden [datetime] $StartTime
 	hidden [datetime] $RefreshTime
 	
@@ -11,7 +12,7 @@ Class XogSession{
 	[void] StartXogSession([PSCredential] $Credential, [string] $Domain) {
 		$Username		= $Credential.Username
 		$Password		= $Credential.GetNetworkCredential().Password
-        $URI            = "https://$Domain/niku/xog"
+        $this.URI            = "https://$Domain/niku/xog"
 		
         $Body = @"
         <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -25,7 +26,7 @@ Class XogSession{
         </SOAP-ENV:Envelope>
 "@
 
-		$Results = Invoke-RestMethod -UseBasicParsing -Uri $URI -Body $Body -ContentType text/xml -Method Post
+		$Results = Invoke-RestMethod -UseBasicParsing -Uri $this.URI -Body $Body -ContentType text/xml -Method Post
 		
 		$this.Domain        = $Domain
         $this.SessionID		= $Results.Envelope.Body.SessionID.'#text'
@@ -35,14 +36,13 @@ Class XogSession{
 	
 	}
 	
-	[void] StopXogSession() {						
-		$BaseUri = ('https://' + $this.Domain)
-		$LogoutURI = ("$BaseUri/niku/wsdl/Object/AllObjects")
+	[void] StopXogSession() {
+		$this.URI += '/Object/AllObjects'
 		
-        Write-Verbose $LogoutURI
+        Write-Verbose $this.URI
 
-		$XogWebService = New-WebServiceProxy -Uri ($LogoutURI) -Namespace XogWebService -UseDefaultCredential	
-		$WebService = New-Object $XogWebService
+		$XOGWebService = New-WebServiceProxy -Uri $this.URI -Namespace XOGWebService -UseDefaultCredential	
+		$WebService = New-Object $XOGWebService
 		$WebService.Logout($this.SessionID)
 		
         $this.SessionID = ''

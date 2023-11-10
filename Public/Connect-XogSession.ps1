@@ -65,7 +65,9 @@ function Connect-XOGSession {
 			Query			= (Get-XOGApi -Service Query -Domain $Domain)
 			InvokeAction 	= (Get-XOGApi -Service InvokeAction -Domain $Domain)
 		}
-				
+		
+		Write-Verbose ('XOG API Details: ' + $Global:XOGAPIDetails)
+
 		#endregion	Create Global Variables
 	}
 	

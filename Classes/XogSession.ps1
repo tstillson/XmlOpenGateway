@@ -37,7 +37,7 @@ Class XogSession{
 	}
 	
 	[void] StopXogSession() {
-		$this.URI += '/Object/AllObjects'
+		$this.URI = ('https://' + $this.Domain + '/niku/wsdl/Object/AllObjects')
 		
         Write-Verbose $this.URI
 

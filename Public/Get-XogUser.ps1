@@ -43,7 +43,8 @@ function Get-XogUser {
 	
 	Process {
 		#region 	XML File Creation
-		Write-Verbose "Creating xml file..."
+		
+  		Write-Verbose "Creating xml file..."
 		
 		# Check for Arguments
 		switch ($arguments) {
@@ -108,7 +109,8 @@ function Get-XogUser {
 		$xmlWriter.Close()
 		
 		#endregion	XML File Creation
-		#region		XOG API Request
+		
+  		#region		XOG API Request
 
 		# Import XML File 
 		[xml] $XmlData = Get-Content $XmlPath
@@ -118,12 +120,10 @@ function Get-XogUser {
 		$Results = [XogUsersService]::ReadUser($XmlData)
 		
 		#endregion	XOG API Request
-		#region		Log Results
-		Write-Verbose "Writing to log..."
-		
-		#endregion
+  
 		#region		Output
-		Write-Output $Results
+		
+  		Write-Output $Results
 		
 		#endregion
 	}
@@ -135,7 +135,6 @@ function Get-XogUser {
 		if ($Null -ne (Get-Content $xmlPath)) {
 			
 			Remove-Item	-Path $xmlPath
-			Clear-Variable -Name API
 			Clear-Variable -Name Endpoint	
 			Clear-Variable -Name ObjectType 
 			Clear-Variable -Name Results

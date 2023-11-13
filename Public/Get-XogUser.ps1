@@ -1,4 +1,4 @@
-function Get-XogUser {
+function Get-XOGUser {
 	
 	#region		Parameters
 	

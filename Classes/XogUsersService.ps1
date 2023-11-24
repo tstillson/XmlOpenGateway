@@ -4,7 +4,7 @@ Class XogUsersService {
 	#endregion
 	#region		Methods
 	[System.Xml.XmlElement] static ReadUser([System.Xml.XmlDocument] $UserXml){
-		$Uri = ('https://' + $Global:XOGSession.Domain + '/niku/wsdl/Object/Users')
+		$Uri = ('https://' + $Global:XogSession.Domain + '/niku/wsdl/Object/Users')
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential
 		$WebServiceTypes = @{}
 		
@@ -15,7 +15,7 @@ Class XogUsersService {
 		$WebService = New-Object $WebServiceProxy
 		$Auth		= New-Object -TypeName $WebServiceTypes.Auth
 		
-		$Auth.SessionID = $Global:XOGSession.SessionID
+		$Auth.SessionID = $Global:XogSession.SessionID
 		$Auth.TenantID = 'clarity'
 		$WebService.AuthValue = $Auth
 		
@@ -26,7 +26,7 @@ Class XogUsersService {
 	}
 	
 	[System.Xml.XmlElement] static WriteUser([System.Xml.XmlDocument] $UserXml){
-		$Uri = ('https://' + $Global:XOGSession.Domain + '/niku/wsdl/Object/Users')
+		$Uri = ('https://' + $Global:XogSession.Domain + '/niku/wsdl/Object/Users')
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential
 		$WebServiceTypes = @{}
 		

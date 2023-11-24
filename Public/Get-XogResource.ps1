@@ -1,4 +1,4 @@
-function Get-XOGResource {
+function Get-XogResource {
 	#region		Parameters
 	
 	[CmdletBinding(DefaultParameterSetName = 'ByResource')]
@@ -25,15 +25,15 @@ function Get-XOGResource {
 		
 		$Endpoint	= 'Resources'
 		$ObjectType = 'resource'
-		$XmlPath	= "$ENV:LOCALAPPDATA\XOG\temp\$ObjectType.xml"
+		$XmlPath	= "$ENV:LOCALAPPDATA\Xog\temp\$ObjectType.xml"
 		
 		Write-Verbose ("Object Type:`t" + $ObjectType)
 		
-		$XOGSessionExists = $Global:XOGSession.IsActive
+		$XogSessionExists = $Global:XogSession.IsActive
 
-		if ($Null -eq $XOGSessionExists -or $XOGSessionExists -eq '') {
+		if ($Null -eq $XogSessionExists -or $XogSessionExists -eq '') {
 			
-            Write-Host "No XOG Session ID Exists"
+            Write-Host "No Xog Session ID Exists"
 			Break;
 		
         }
@@ -160,16 +160,16 @@ function Get-XOGResource {
 		
 		#endregion	XML File Creation
 		
-        #region		XOG API Request
+        #region		Xog API Request
 	
     	[xml] $XmlData = Get-Content $XmlPath
 		
         Write-Verbose ("Xml file content:`n`n" + $XmlData.OuterXml + "`n`n")
-		Write-Verbose "Initiating XOG API request..."
+		Write-Verbose "Initiating Xog API request..."
 		
-        $Results = [XOGResourcesService]::ReadResource($XmlData)
+        $Results = [XogResourcesService]::ReadResource($XmlData)
 				
-		#endregion	XOG API Request	
+		#endregion	Xog API Request	
 
 		#region		Output
 		

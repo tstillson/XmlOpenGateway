@@ -1,4 +1,4 @@
-Class XOGSession{
+Class XogSession{
 	#region		Properties
 	[string] $SessionID
 	[bool] $IsActive
@@ -9,7 +9,7 @@ Class XOGSession{
 	
 	#endregion
 	#region		Methods
-	[void] StartXOGSession([PSCredential] $Credential, [string] $Domain) {
+	[void] StartXogSession([PSCredential] $Credential, [string] $Domain) {
 		$Username		= $Credential.Username
 		$Password		= $Credential.GetNetworkCredential().Password
         $this.URI            = "https://$Domain/niku/xog"
@@ -36,13 +36,13 @@ Class XOGSession{
 	
 	}
 	
-	[void] StopXOGSession() {
+	[void] StopXogSession() {
 		$this.URI = ('https://' + $this.Domain + '/niku/wsdl/Object/AllObjects')
 		
         Write-Verbose $this.URI
 
-		$XOGWebService = New-WebServiceProxy -Uri $this.URI -Namespace XOGWebService -UseDefaultCredential	
-		$WebService = New-Object $XOGWebService
+		$XogWebService = New-WebServiceProxy -Uri $this.URI -Namespace XogWebService -UseDefaultCredential	
+		$WebService = New-Object $XogWebService
 		$WebService.Logout($this.SessionID)
 		
         $this.SessionID = ''
@@ -70,7 +70,7 @@ Class XOGSession{
 		
 	#endregion
 	#region		Constructors
-	XOGSession(){}
+	XogSession(){}
 	
 	#endregion	
 }

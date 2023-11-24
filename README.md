@@ -1,5 +1,5 @@
 # XmlOpenGateway
-PowerShell wrapper module for the Broadcom Clarity XML Open Gateway (XOG) APIs
+PowerShell wrapper module for the Broadcom Clarity XML Open Gateway (XOG) Web Service APIs
 
 # REQUIREMENTS
 Must be granted the following access rights in Clarity:

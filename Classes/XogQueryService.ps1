@@ -1,10 +1,10 @@
-Class XOGQueryService {
+Class XogQueryService {
 	#region		Properties
 	
 	#endregion
 	#region		Methods
 	[System.Object] static Query([string] $QueryCode){
-		$Uri = ('https://' + $Global:XOGSession.Domain + "/niku/wsdl/Query/$QueryCode")
+		$Uri = ('https://' + $Global:XogSession.Domain + "/niku/wsdl/Query/$QueryCode")
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential -Namespace Query -Class $QueryCode
 		$WebServiceTypes = @{}
 		

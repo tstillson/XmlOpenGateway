@@ -1,11 +1,11 @@
-function Get-XOGApi {
+function Get-XogApi {
 	
     <#
 		.Synopsis
-			Get basic details for XOG endpoints 
+			Get basic details for Xog endpoints 
 		
 		.DESCRIPTION
-			Retrieve a list of all endpoints for a given XOG API (Object, Query, InvokeAction).
+			Retrieve a list of all endpoints for a given Xog API (Object, Query, InvokeAction).
 
 		.EXAMPLE
 			Get-XogApi -Service Object -Domain clarity-sample-domain.com

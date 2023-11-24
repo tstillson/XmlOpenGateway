@@ -1,10 +1,10 @@
-Class XOGResourcesService {
+Class XogResourcesService {
 	#region		Properties
 	
 	#endregion
 	#region		Methods
 	[System.Xml.XmlElement] static ReadResource([System.Xml.XmlDocument] $ResourceXml){
-		$Uri = ('https://' + $Global:XOGSession.Domain + '/niku/wsdl/Object/Resources')
+		$Uri = ('https://' + $Global:XogSession.Domain + '/niku/wsdl/Object/Resources')
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential
 		$WebServiceTypes = @{}
 

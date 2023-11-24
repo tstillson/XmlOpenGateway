@@ -1,4 +1,4 @@
-function Get-XOGQuery {
+function Get-XogQuery {
 	
 	#region		Parameters
 	
@@ -26,7 +26,7 @@ function Get-XOGQuery {
 		$paramAttributesCollect = New-Object -Type System.Collections.ObjectModel.Collection[System.Attribute]
 		$paramAttributesCollect.Add($paramAttributes)
 		$paramAttributesCollect.Add((`
-			New-Object System.Management.Automation.ValidateSetAttribute($Global:XOGApiDetails.Query)))
+			New-Object System.Management.Automation.ValidateSetAttribute($Global:XogApiDetails.Query)))
 		
 		# Create parameter with name, type, and attributes
 		$dynParam = New-Object -Type System.Management.Automation.RuntimeDefinedParameter(`
@@ -55,20 +55,20 @@ function Get-XOGQuery {
 		[System.Net.ServicePointManager]::DefaultConnectionLimit = 100
 		
 		# Set $Environment based on $Global:XogEnvironment value
-		$XogSessionExists = (Test-String ($Global:XOGSession.SessionID).Test)
+		$XogSessionExists = (Test-String ($Global:XogSession.SessionID).Test)
 
 		if ($XogSessionExists -eq $False)
 		{
 
-			Write-Host "No XOG connection established; run 'Connect-XogSession' and try again"
+			Write-Host "No Xog connection established; run 'Connect-XogSession' and try again"
 			Break;
 
 		}
 
-		$Uri		= ('https://' + $Global:XOGSession.Domain + "/niku/wsdl/Query/$QueryCode")
+		$Uri		= ('https://' + $Global:XogSession.Domain + "/niku/wsdl/Query/$QueryCode")
 		$ObjectType = 'query'
 		$ObjectID	= $QueryCode
-		$XmlPath 	= "$ENV:LOCALAPPDATA\XOG\temp\$QueryCode.xml"
+		$XmlPath 	= "$ENV:LOCALAPPDATA\Xog\temp\$QueryCode.xml"
 		
 		Write-Verbose ("Object Type:`t" + $ObjectType)
 		
@@ -127,7 +127,7 @@ function Get-XOGQuery {
 			
 		#endregion	XML File Creation
 		
-		#region		XOG API Request
+		#region		Xog API Request
 		
 		# Create new WebServiceProxy object for Resources object
 		$QueryWebService = New-WebServiceProxy `
@@ -173,16 +173,16 @@ function Get-XOGQuery {
 		
 		# Create Auth object with session ID & tenant ID
 		$Auth = New-Object $QueryWebServiceTypes.Auth
-		$Auth.SessionID = $Global:XOGSession.SessionID
+		$Auth.SessionID = $Global:XogSession.SessionID
 		$Auth.TenantID = 'clarity'
 		$WebService.AuthValue = $Auth
 
 		# Invoke the ReadResource operation
-		Write-Verbose "Initiating XOG API request..."
+		Write-Verbose "Initiating Xog API request..."
 		
 		$Results = $WebService.Query($Query)
 		
-		#endregion	XOG API Request
+		#endregion	Xog API Request
 		
 		#region		Output
 	

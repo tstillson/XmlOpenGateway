@@ -1,4 +1,4 @@
-function Get-XOGUser {
+function Get-XogUser {
 	
 	#region		Parameters
 	
@@ -23,14 +23,14 @@ function Get-XOGUser {
 		
 		$Endpoint	= 'Users'
 		$ObjectType = 'user'
-		$XmlPath	= "$ENV:LOCALAPPDATA\XOG\temp\$Endpoint.xml"
+		$XmlPath	= "$ENV:LOCALAPPDATA\Xog\temp\$Endpoint.xml"
 		
 		Write-Verbose ("Object Type:`t" + $ObjectType)
 		
-		$XOGSessionExists = $Global:XOGSession.IsActive
+		$XogSessionExists = $Global:XogSession.IsActive
 
-		if ($Null -eq $XOGSessionExists -or $XOGSessionExists -eq '') {
-			Write-Host "No XOG Session ID Exists"
+		if ($Null -eq $XogSessionExists -or $XogSessionExists -eq '') {
+			Write-Host "No Xog Session ID Exists"
 			Break;
 		}
 
@@ -110,16 +110,16 @@ function Get-XOGUser {
 		
 		#endregion	XML File Creation
 		
-  		#region		XOG API Request
+  		#region		Xog API Request
 
 		# Import XML File 
 		[xml] $XmlData = Get-Content $XmlPath
 		Write-Verbose ("Xml file content:`n`n" + $XmlData.OuterXml + "`n`n")
 		
-		Write-Verbose "Initiating XOG API request..."
+		Write-Verbose "Initiating Xog API request..."
 		$Results = [XogUsersService]::ReadUser($XmlData)
 		
-		#endregion	XOG API Request
+		#endregion	Xog API Request
   
 		#region		Output
 		

@@ -24,3 +24,7 @@ Connect-XogSession -Credential $Credential -Domain your-clarity-domain.com
 
 ## End the current XOG session
 Disconnect-XogSession
+
+# LINKS
+- [Clarity Docs - Access Rights Reference](https://techdocs.broadcom.com/us/en/ca-enterprise-software/business-management/clarity-project-and-portfolio-management-ppm-on-premise/16-2-0/reference/clarity-ppm-access-rights-reference.html)
+- [Clarity Docs - XML Open Gateway (XOG) Development](https://techdocs.broadcom.com/us/en/ca-enterprise-software/business-management/clarity-project-and-portfolio-management-ppm-on-premise/16-2-0/reference/xml-open-gateway-xog-development.html)

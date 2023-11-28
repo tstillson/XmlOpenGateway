@@ -11,7 +11,7 @@ You must also be granted the following access rights:
 The above access rights simply grant the ability to make XOG requests; to import/export data for a 
 particular object, you must also be assigned the corresponding XOG access right for that object.
 
-EX: Project - XOG Access grants the ability to import/export project objects to/from the database
+For example, _Project - XOG Access_ grants the ability to import/export project objects to/from the database
 
 # USAGE
 There are 2 functions used for managing XOG sessions:

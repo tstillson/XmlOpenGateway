@@ -2,10 +2,16 @@
 PowerShell wrapper module for the Broadcom Clarity XML Open Gateway (XOG) Web Service APIs
 
 # REQUIREMENTS
-Must be granted the following access rights in Clarity:
+You must have a valid Classic PPM login name & password. 
+You must also be granted the following access rights:
   
-  - API Admin
-  - XOG Admin (for each endpoint required)
+  - Administration - Access
+  - Administration - XOG 
+
+The above access rights simply grant the ability to make XOG requests; to import/export data for a 
+particular object, you must also be assigned the corresponding XOG access right for that object.
+
+For example, _Project - XOG Access_ grants the ability to import/export project objects to/from the database
 
 # USAGE
 There are 2 functions used for managing XOG sessions:
@@ -18,3 +24,7 @@ Connect-XogSession -Credential $Credential -Domain your-clarity-domain.com
 
 ## End the current XOG session
 Disconnect-XogSession
+
+# LINKS
+- [Clarity Docs - Access Rights Reference](https://techdocs.broadcom.com/us/en/ca-enterprise-software/business-management/clarity-project-and-portfolio-management-ppm-on-premise/16-2-0/reference/clarity-ppm-access-rights-reference.html)
+- [Clarity Docs - XML Open Gateway (XOG) Development](https://techdocs.broadcom.com/us/en/ca-enterprise-software/business-management/clarity-project-and-portfolio-management-ppm-on-premise/16-2-0/reference/xml-open-gateway-xog-development.html)

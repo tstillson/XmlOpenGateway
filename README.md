@@ -20,10 +20,17 @@ There are 2 functions used for managing XOG sessions:
   - Disconnect-XogSession
 
 ## Create a new XOG session
+Call the _Login()_ web service to generate a sessionId & create/store session variables
+```
+[pscredential] $Credential = Get-Credential
 Connect-XogSession -Credential $Credential -Domain your-clarity-domain.com
+```
 
 ## End the current XOG session
+Call the _Logout()_ web service and delete the sessionId
+```
 Disconnect-XogSession
+```
 
 # LINKS
 - [Clarity Docs - Access Rights Reference](https://techdocs.broadcom.com/us/en/ca-enterprise-software/business-management/clarity-project-and-portfolio-management-ppm-on-premise/16-2-0/reference/clarity-ppm-access-rights-reference.html)

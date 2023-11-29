@@ -10,9 +10,9 @@ Class XogSession{
 	#endregion
 	#region		Methods
 	[void] StartXogSession([PSCredential] $Credential, [string] $Domain) {
-		$Username		= $Credential.Username
-		$Password		= $Credential.GetNetworkCredential().Password
-        $this.URI            = "https://$Domain/niku/xog"
+		$Username = $Credential.Username
+		$Password = $Credential.GetNetworkCredential().Password
+        $this.URI = "https://$Domain/niku/xog"
 		
         $Body = @"
         <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -46,8 +46,8 @@ Class XogSession{
 		$WebService.Logout($this.SessionID)
 		
         $this.SessionID = ''
-        $this.URI = ''
-        $this.IsActive = $False
+        $this.URI		= ''
+        $this.IsActive	= $False
 	}
 		
 	[string] CheckSessionStatus() {

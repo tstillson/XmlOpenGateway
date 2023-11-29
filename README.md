@@ -20,15 +20,17 @@ There are 2 functions used for managing XOG sessions:
   - Disconnect-XogSession
 
 ## Create a new XOG session
-Call the _Login()_ web service to generate a sessionId & create/store session variables
-```
+Call the _Login()_ web service to generate a sessionId & create/store session variables:
+
+```powershell
 [pscredential] $Credential = Get-Credential
-Connect-XogSession -Credential $Credential -Domain your-clarity-domain.com
+Connect-XogSession -Credential $Credential -Domain 'your-clarity-domain.com'
 ```
 
 ## End the current XOG session
-Call the _Logout()_ web service and delete the sessionId
-```
+Call the _Logout()_ web service and delete the sessionId:
+
+```powershell
 Disconnect-XogSession
 ```
 

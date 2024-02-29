@@ -5,7 +5,7 @@ Class XogObjectsService {
 	#region		Methods
 	[System.Xml.XmlElement] static ReadObject([System.Xml.XmlDocument] $ObjectXml){
 		$Domain = $Global:XogSession.Domain
-    $Uri = "https://${Domain}/niku/wsdl/Object/ContentPack"
+    		$Uri = "https://${Domain}/niku/wsdl/Object/ContentPack"
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential
 		$WebServiceTypes = @{}
 		
@@ -14,7 +14,7 @@ Class XogObjectsService {
 		}
 		
 		$WebService = New-Object $WebServiceProxy
-		$Auth		= New-Object -TypeName $WebServiceTypes.Auth
+		$Auth = New-Object -TypeName $WebServiceTypes.Auth
 		
 		$Auth.SessionID = $Global:XogSession.SessionID
 		$Auth.TenantID = 'clarity'
@@ -28,7 +28,7 @@ Class XogObjectsService {
 	
 	[System.Xml.XmlElement] static WriteObject([System.Xml.XmlDocument] $ObjectXml){
 		$Domain = $Global:XogSession.Domain
-    $Uri = "https://${Domain}/niku/wsdl/Object/ContentPack"
+    		$Uri = "https://${Domain}/niku/wsdl/Object/ContentPack"
 		$WebServiceProxy = New-WebServiceProxy -Uri $Uri -UseDefaultCredential
 		$WebServiceTypes = @{}
 		
